@@ -1,175 +1,230 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Wind, Zap, Globe, TrendingUp, MapPin, Factory, CheckCircle, Clock 
-} from "lucide-react";
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ВЭС 500 МВт | Экибастуз | Инвестиционный проект</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS для анимаций и кастомных стилей -->
+    <style>
+        /* Плавные скроллы и базовые анимации */
+        html {
+            scroll-behavior: smooth;
+        }
+        .card-hover {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+        .hero-icon-hover:hover {
+            transform: scale(1.08);
+            transition: transform 0.2s ease;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        /* Анимация для карточек при появлении */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
 
-export default function Landing() {
-  return (
-    <div className="bg-white text-gray-900">
-
-      {/* HERO */}
-      <section className="h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-green-900 text-white relative overflow-hidden">
-        <motion.div initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1 }}>
-          <h1 className="text-6xl font-bold mb-6 tracking-tight">
-            ВЭС 500 МВт
-          </h1>
-          <p className="text-2xl mb-4 opacity-80">Экибастуз, Казахстан</p>
-          <p className="text-lg mb-8 max-w-2xl opacity-70">
-            Готовый инвестиционный проект с подтвержденной инфраструктурой,
-            BANKABLE ветропотенциалом и международными партнёрами
-          </p>
-
-          <div className="flex gap-4 justify-center">
-            <Button size="lg">Получить предложение</Button>
-            <Button size="lg" variant="outline">Скачать презентацию</Button>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* KPI */}
-      <section className="py-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center px-6">
-        {[
-          { label: "500 МВт", sub: "мощность", icon: <Zap /> },
-          { label: "80+ млрд ₸", sub: "инвестиции", icon: <TrendingUp /> },
-          { label: "8.61 м/с", sub: "ветер", icon: <Wind /> },
-          { label: "2027", sub: "ТУ действуют", icon: <Factory /> }
-        ].map((item, i) => (
-          <motion.div key={i} whileHover={{ scale: 1.08 }}>
-            <Card className="shadow-lg">
-              <CardContent className="p-6">
-                <div className="mb-3 flex justify-center">{item.icon}</div>
-                <div className="text-2xl font-bold">{item.label}</div>
-                <div className="text-sm text-gray-500">{item.sub}</div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </section>
-
-      {/* PROJECT DETAILS */}
-      <section className="py-16 px-6 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-center">Ключевые параметры</h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {[
-            "500 МВт установленной мощности",
-            "Инвестиции более 80 млрд тенге",
-            "Средняя скорость ветра 8.61 м/с (BANKABLE)",
-            "20 км от Экибастуза",
-            "Прямое подключение к KEGOC",
-            "Готовая схема выдачи мощности"
-          ].map((item, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.03 }}>
-              <Card className="border-l-4 border-green-600">
-                <CardContent className="p-4">{item}</CardContent>
-              </Card>
-            </motion.div>
-          ))}
+    <!-- HERO секция с анимацией появления -->
+    <section class="h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-green-900 text-white relative overflow-hidden">
+        <div class="fade-in-up">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                ВЭС 500 МВт
+            </h1>
+            <p class="text-xl md:text-2xl mb-4 opacity-80">Экибастуз, Казахстан</p>
+            <p class="text-base md:text-lg mb-8 max-w-2xl opacity-70">
+                Готовый инвестиционный проект с подтвержденной инфраструктурой,
+                BANKABLE ветропотенциалом и международными партнёрами
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <button class="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-lg">Получить предложение</button>
+                <button class="border border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-6 rounded-lg transition duration-300">Скачать презентацию</button>
+            </div>
         </div>
-      </section>
+    </section>
 
-      {/* READINESS */}
-      <section className="py-16 bg-gray-100 px-6">
-        <h2 className="text-3xl font-bold text-center mb-10">Готовность проекта</h2>
-
-        <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-          {[
-            "ТУ продлены до 2027 года",
-            "5068 га земель оформлено",
-            "27 площадок под турбины",
-            "89.8 га дороги",
-            "LIDAR установлен",
-            "Положительные экспертизы",
-            "ВЛ-220 кВ спроектирована",
-            "BANKABLE отчет ветра"
-          ].map((item, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.03 }}>
-              <Card>
-                <CardContent className="p-4 flex items-center gap-3">
-                  <CheckCircle className="text-green-600" />
-                  {item}
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* HISTORY (NEW) */}
-      <section className="py-20 px-6 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">История проекта</h2>
-
-        <div className="space-y-6">
-          {[
-            "2022 — Получены ТУ от KEGOC",
-            "2024 — Земельные участки и ветромониторинг (BANKABLE отчет)",
-            "2024 — Меморандум с акиматом и ERG",
-            "2024 — Переговоры с Huadian, формирование партнерства",
-            "2025 — Продление ТУ до 2027",
-            "2025 — Положительные экспертизы по ВЛ-220 кВ и ОРУ",
-            "2025 — Оформление всей инфраструктуры",
-            "2026 — Проект готов к инвестиционной фазе"
-          ].map((item, i) => (
-            <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}>
-              <div className="flex items-center gap-4">
-                <Clock className="text-green-700" />
-                <div className="bg-gray-50 p-4 rounded-xl shadow w-full">
-                  {item}
+    <!-- KPI Карточки с иконками (Font Awesome для простоты) -->
+    <section class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <!-- KPI 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                <div class="flex justify-center mb-3 text-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <div class="text-2xl font-bold">500 МВт</div>
+                <div class="text-sm text-gray-500">мощность</div>
+            </div>
+            <!-- KPI 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                <div class="flex justify-center mb-3 text-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13h2l3 3 4-8 3 5 2-2h3M5 21h14" /></svg>
+                </div>
+                <div class="text-2xl font-bold">80+ млрд ₸</div>
+                <div class="text-sm text-gray-500">инвестиции</div>
+            </div>
+            <!-- KPI 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                <div class="flex justify-center mb-3 text-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h16M12 4v16" /></svg>
+                </div>
+                <div class="text-2xl font-bold">8.61 м/с</div>
+                <div class="text-sm text-gray-500">ветер</div>
+            </div>
+            <!-- KPI 4 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                <div class="flex justify-center mb-3 text-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1M5 17h14" /></svg>
+                </div>
+                <div class="text-2xl font-bold">2027</div>
+                <div class="text-sm text-gray-500">ТУ действуют</div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      {/* INFRA */}
-      <section className="py-16 px-6 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10">Инфраструктура</h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card><CardContent className="p-6 text-center"><Zap />ОРУ 220 кВ</CardContent></Card>
-          <Card><CardContent className="p-6 text-center"><Globe />ВЛ-220 кВ</CardContent></Card>
-          <Card><CardContent className="p-6 text-center"><MapPin />ПС Argestus</CardContent></Card>
+    <!-- Ключевые параметры -->
+    <section class="py-16 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-10 text-center">Ключевые параметры</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="border-l-4 border-green-600 bg-white shadow-md rounded-r-lg p-4 card-hover">500 МВт установленной мощности</div>
+            <div class="border-l-4 border-green-600 bg-white shadow-md rounded-r-lg p-4 card-hover">Инвестиции более 80 млрд тенге</div>
+            <div class="border-l-4 border-green-600 bg-white shadow-md rounded-r-lg p-4 card-hover">Средняя скорость ветра 8.61 м/с (BANKABLE)</div>
+            <div class="border-l-4 border-green-600 bg-white shadow-md rounded-r-lg p-4 card-hover">20 км от Экибастуза</div>
+            <div class="border-l-4 border-green-600 bg-white shadow-md rounded-r-lg p-4 card-hover">Прямое подключение к KEGOC</div>
+            <div class="border-l-4 border-green-600 bg-white shadow-md rounded-r-lg p-4 card-hover">Готовая схема выдачи мощности</div>
         </div>
-      </section>
+    </section>
 
-      {/* INVESTORS */}
-      <section className="py-16 bg-gray-100 px-6">
-        <h2 className="text-3xl font-bold text-center mb-10">Партнерства</h2>
-
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {[
-            "ERG + Huadian",
-            "Term Sheet подписан",
-            "Меморандумы 2024",
-            "Создание СП"
-          ].map((item, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.05 }}>
-              <Card className="shadow-md">
-                <CardContent className="p-4 text-center font-semibold">
-                  {item}
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+    <!-- Готовность проекта -->
+    <section class="py-16 bg-gray-100 px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Готовность проекта</h2>
+        <div class="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> ТУ продлены до 2027 года</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> 5068 га земель оформлено</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> 27 площадок под турбины</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> 89.8 га дороги</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> LIDAR установлен</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> Положительные экспертизы</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> ВЛ-220 кВ спроектирована</div>
+            <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3 card-hover"><span class="text-green-600 text-xl">✓</span> BANKABLE отчет ветра</div>
         </div>
-      </section>
+    </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-green-700 text-white text-center">
-        <h2 className="text-3xl font-bold mb-6">
-          Получить финансовую модель проекта
-        </h2>
-        <Button size="lg" variant="secondary">Связаться</Button>
-      </section>
+    <!-- История проекта (с анимацией при скролле) -->
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">История проекта</h2>
+        <div class="space-y-6">
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2022 — Получены ТУ от KEGOC</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2024 — Земельные участки и ветромониторинг (BANKABLE отчет)</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2024 — Меморандум с акиматом и ERG</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2024 — Переговоры с Huadian, формирование партнерства</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2025 — Продление ТУ до 2027</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2025 — Положительные экспертизы по ВЛ-220 кВ и ОРУ</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2025 — Оформление всей инфраструктуры</div></div>
+            <div class="flex items-start gap-4 animate-on-scroll"><span class="text-green-700 mt-1">🕒</span><div class="bg-gray-50 p-4 rounded-xl shadow w-full">2026 — Проект готов к инвестиционной фазе</div></div>
+        </div>
+    </section>
 
-      <footer className="py-10 text-center text-sm text-gray-500">
+    <!-- Инфраструктура -->
+    <section class="py-16 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-10">Инфраструктура</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover"><span class="text-green-600 block mb-2">⚡</span> ОРУ 220 кВ</div>
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover"><span class="text-green-600 block mb-2">🌐</span> ВЛ-220 кВ</div>
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover"><span class="text-green-600 block mb-2">📍</span> ПС Argestus</div>
+        </div>
+    </section>
+
+    <!-- Партнерства -->
+    <section class="py-16 bg-gray-100 px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Партнерства</h2>
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="bg-white shadow-md rounded-xl p-4 text-center font-semibold card-hover">ERG + Huadian</div>
+            <div class="bg-white shadow-md rounded-xl p-4 text-center font-semibold card-hover">Term Sheet подписан</div>
+            <div class="bg-white shadow-md rounded-xl p-4 text-center font-semibold card-hover">Меморандумы 2024</div>
+            <div class="bg-white shadow-md rounded-xl p-4 text-center font-semibold card-hover">Создание СП</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-green-700 text-white text-center">
+        <h2 class="text-3xl font-bold mb-6">Получить финансовую модель проекта</h2>
+        <button class="bg-white text-green-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg">Связаться</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-sm text-gray-500">
         © 2026 Argestus
-      </footer>
+    </footer>
 
-    </div>
-  );
-}
+    <!-- Скрипт для анимации появления элементов при скролле -->
+    <script>
+        // Анимация для истории проекта (появление при скролле)
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // отключаем наблюдение после появления
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
+        animatedElements.forEach(el => observer.observe(el));
+        
+        // Добавляем классы для анимации при загрузке (для видимых элементов)
+        window.addEventListener('load', () => {
+            animatedElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+        
+        // Небольшой эффект для кнопок (для демонстрации)
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if(btn.innerText.includes('Связаться') || btn.innerText.includes('Получить')) {
+                    alert('Форма связи откроется здесь. \nДля демонстрации: info@argestus.kz');
+                } else if(btn.innerText.includes('Скачать')) {
+                    alert('Скачивание презентации (демо-режим)');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
